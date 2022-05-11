@@ -1,3 +1,7 @@
+let playerScore = 0
+let botScore = 0
+let draw = 0
+
 //a function that takes the computer play
 function computerPlay() {
     let num = Math.random()
@@ -27,7 +31,24 @@ function singleRound(playerselection, computerselection) {
     }
 }
 
-let playerselection = 'rock'
-let computerselection = computerPlay()
+// let playerselection = 'rock'
+// let computerselection = computerPlay()
 
-console.log(singleRound(playerselection, computerselection))
+function game() {
+    //play the game 5 times and reports the winner/loser at the end
+    //if the user puts in rock 
+    //the computer will make a choice
+    //keeps score 
+
+    for (let i = 0; i < 5; i++) {
+        let userInput = prompt('Rock, Paper, Or Scissors?: ').toLowerCase()
+        let computerselection = computerPlay()
+        let results = singleRound(userInput, computerselection)
+
+        console.log(results)
+
+    }
+
+}
+
+game()
