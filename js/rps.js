@@ -2,6 +2,12 @@ let playerScore = 0
 let botScore = 0
 let draw = 0
 
+let playerWin = 'You won the round'
+let botWon = 'the Bot won this round'
+let drawInGame = 'Draw!'
+let gameWonMessage = 'you won the game!'
+let gameLostMessage = 'you lost the game'
+
 //a function that takes the computer play
 function computerPlay() {
     let num = Math.random()
@@ -20,19 +26,24 @@ function singleRound(playerselection, computerselection) {
     let playerChoice = playerselection
     let botChoice = computerselection
 
+
+
+
     if ((playerChoice === 'rock' && botChoice === 'scissors') ||
         (playerChoice === 'paper' && botChoice === 'rock') ||
         (playerChoice === 'scissors' && botChoice === 'paper')) {
-        return `You WIN! ${playerChoice} beats ${botChoice}`
+        return playerWin
     } else if (playerChoice === botChoice) {
-        return `Draw!`
+        return drawInGame
     } else {
-        return `You Lost! ${botChoice} beats ${playerChoice}`
+        return botWon
     }
 }
 
 // let playerselection = 'rock'
 // let computerselection = computerPlay()
+
+
 
 function game() {
     //play the game 5 times and reports the winner/loser at the end
@@ -44,11 +55,47 @@ function game() {
         let userInput = prompt('Rock, Paper, Or Scissors?: ').toLowerCase()
         let computerselection = computerPlay()
         let results = singleRound(userInput, computerselection)
-
         console.log(results)
+        gameScore(results)
+        console.log(`your score is: ${playerScore}`)
+        console.log(`bot score is: ${botScore}`)
 
     }
 
+    if (playerScore > botScore) {
+        alert(gameWonMessage)
+    } else if (botScore > playerScore) {
+        alert(gameLostMessage)
+    }
+
+
 }
+
+
+
+//keep score
+
+function gameScore(game) {
+    //keep track of the score
+    if (game === playerWin) {
+        playerScore++
+        return `this is the bots score: ${botScore}
+                this is your score: ${playerScore}`
+    } else if (game === botWon) {
+        botScore++
+        return `this is the bots score: ${botScore} 
+                this is player score: ${playerScore}`
+    } else {
+        draw++
+    }
+
+    //what do we do with the scores after we get them 
+
+}
+
+//return the player score and the computer score
+
+
+
 
 game()
