@@ -28,7 +28,6 @@ function singleRound(playerselection, computerselection) {
 
 
 
-
     if ((playerChoice === 'rock' && botChoice === 'scissors') ||
         (playerChoice === 'paper' && botChoice === 'rock') ||
         (playerChoice === 'scissors' && botChoice === 'paper')) {
@@ -66,6 +65,8 @@ function game() {
         alert(gameWonMessage)
     } else if (botScore > playerScore) {
         alert(gameLostMessage)
+    } else {
+        alert('Game ended in a Draw')
     }
 
 
@@ -89,11 +90,9 @@ function gameScore(game) {
         draw++
     }
 
-    //what do we do with the scores after we get them 
 
 }
 
-//return the player score and the computer score
 
 
 
