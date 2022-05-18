@@ -61,3 +61,10 @@ p {
     display: flex;
     justify-content: space-evenly;
 }
+
+.reset-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 80px;
+}
+
