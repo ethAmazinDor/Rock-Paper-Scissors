@@ -1,4 +1,4 @@
-# The-Odin-Project-Examples
+# Rock-Paper-Scissors Javascript
 
 This is a Rock Paper Scissors project!
 
