@@ -5,14 +5,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
-    <h1>hi</h1>
+    <div class="container">
+        <div id="buttons" class="buttons">
+            <button id="rock" class="rock">Rock</button>
+            <button id="paper" class="paper">Paper</button>
+            <button id="scissors" class="scissors">Scissors</button>
+        </div>
+        <div class="choices">
+            <h1>your choice:</h1>
+            <h1 id="compChoice">computer choice:</h1>
+        </div>
+        <div class="choice">
+            <p class="userSelection"></p>
+            <p class="computerSelection"></p>
+        </div>
+        <div class="holder">
+            <h1 class="results">results:</h1>
+        </div>
+    </div>
+
+    <div class="container-2">
+        <div class="scores">
+            <div class="your-score">
+                <h2>your score: <span class="userscore"></span></h2>
+
+            </div>
+            <div class="bot-score">
+                <h2>bot score: <span class="botscore"></span></h2>
+            </div>
+        </div>
+
+    </div>
 
 
 
-    <script src="js/example.js"></script>
+    <script src="js/rps.js"></script>
 </body>
 
 </html>
