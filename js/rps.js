@@ -8,9 +8,17 @@ let buttons = document.getElementById('buttons')
 let userPick = document.querySelector('.userSelection')
 let computerPick = document.querySelector('.computerSelection')
 
+let userscore = document.querySelector('.userscore')
+let botscore = document.querySelector('.botscore')
+
 let yourChoice
 let result
 
+
+
+let playerScore = 0
+let botScore = 0
+let draw = 0
 
 
 
@@ -28,6 +36,11 @@ function clickListener(e) {
     userPick.innerHTML = yourChoice
     computerPick.innerHTML = computerselection
     resultDisplay.innerHTML = result
+    gameScore(result)
+    userscore.textContent = playerScore
+    botscore.textContent = botScore
+
+
 
 }
 
@@ -35,9 +48,6 @@ function clickListener(e) {
 
 
 
-let playerScore = 0
-let botScore = 0
-let draw = 0
 
 
 let playerWin = 'You won the round'
@@ -83,42 +93,39 @@ function singleRound(playerselection, computerselection) {
 
 
 
+// function game() {
+//     //play the game 5 times and reports the winner/loser at the end
+//     //keeps score 
+//     for (let i = 0; i < 5; i++) {
+//         singleRound()
+//     }
 
-function game() {
-    //play the game 5 times and reports the winner/loser at the end
-    //if the user puts in rock 
-    //the computer will make a choice
-    //keeps score 
+//     gameScore()
+//     console.log(`your score is: ${playerScore}`)
+//     console.log(`bot score is: ${botScore}`)
 
-    for (let i = 0; i < 5; i++) {
-        singleRound()
-        gameScore()
-        console.log(`your score is: ${playerScore}`)
-        console.log(`bot score is: ${botScore}`)
-    }
-
-    if (playerScore > botScore) {
-        alert(gameWonMessage)
-    } else if (botScore > playerScore) {
-        alert(gameLostMessage)
-    } else {
-        alert('Game ended in a Draw')
-    }
-}
+//     if (playerScore > botScore) {
+//         alert(gameWonMessage)
+//     } else if (botScore > playerScore) {
+//         alert(gameLostMessage)
+//     } else {
+//         alert('Game ended in a Draw')
+//     }
+// }
 
 
 //keep score
 
-function gameScore(game) {
+function gameScore(results) {
     //keep track of the score
-    if (game === playerWin) {
+    if (results === playerWin) {
         playerScore++
-        return `this is the bots score: ${botScore}
-                this is your score: ${playerScore}`
-    } else if (game === botWon) {
+        // return `this is the bots score: ${botScore}
+        //         this is your score: ${playerScore}`
+    } else if (results === botWon) {
         botScore++
-        return `this is the bots score: ${botScore} 
-                this is player score: ${playerScore}`
+        // return `this is the bots score: ${botScore} 
+        //         this is player score: ${playerScore}`
     } else {
         draw++
     }
