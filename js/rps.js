@@ -1,6 +1,44 @@
+//add event listeners
+let resultDisplay = document.querySelector('.results')
+let rock = document.getElementById('rock')
+let paper = document.getElementById('paper')
+let scissors = document.getElementById('scissors')
+let buttons = document.getElementById('buttons')
+//this is where the user's choice he selected will show up
+let userPick = document.querySelector('.userSelection')
+let computerPick = document.querySelector('.computerSelection')
+
+let yourChoice
+let result
+
+
+
+
+
+buttons.addEventListener('click', clickListener)
+
+function clickListener(e) {
+    if (e.target.tagName != 'BUTTON') {
+        return
+    }
+    yourChoice = e.target.id
+    const playerselection = e.target.className
+    const computerselection = computerPlay()
+    singleRound(playerselection, computerselection)
+    userPick.innerHTML = yourChoice
+    computerPick.innerHTML = computerselection
+    resultDisplay.innerHTML = result
+
+}
+
+
+
+
+
 let playerScore = 0
 let botScore = 0
 let draw = 0
+
 
 let playerWin = 'You won the round'
 let botWon = 'the Bot won this round'
@@ -23,24 +61,26 @@ function computerPlay() {
 
 //a function thats going to play a game of rock, paper, scissors
 function singleRound(playerselection, computerselection) {
-    let playerChoice = playerselection
-    let botChoice = computerselection
 
 
+    if ((playerselection === 'rock' && computerselection === 'scissors') ||
+        (playerselection === 'paper' && computerselection === 'rock') ||
+        (playerselection === 'scissors' && computerselection === 'paper')) {
+        //console.log(playerWin) 
 
-    if ((playerChoice === 'rock' && botChoice === 'scissors') ||
-        (playerChoice === 'paper' && botChoice === 'rock') ||
-        (playerChoice === 'scissors' && botChoice === 'paper')) {
-        return playerWin
-    } else if (playerChoice === botChoice) {
-        return drawInGame
+        result = playerWin
+
+    } else if (playerselection === computerselection) {
+        //return drawInGame
+        result = drawInGame
     } else {
-        return botWon
+        //return botWon
+        result = botWon
     }
+
 }
 
-// let playerselection = 'rock'
-// let computerselection = computerPlay()
+
 
 
 
@@ -51,14 +91,10 @@ function game() {
     //keeps score 
 
     for (let i = 0; i < 5; i++) {
-        let userInput = prompt('Rock, Paper, Or Scissors?: ').toLowerCase()
-        let computerselection = computerPlay()
-        let results = singleRound(userInput, computerselection)
-        console.log(results)
-        gameScore(results)
+        singleRound()
+        gameScore()
         console.log(`your score is: ${playerScore}`)
         console.log(`bot score is: ${botScore}`)
-
     }
 
     if (playerScore > botScore) {
@@ -68,10 +104,7 @@ function game() {
     } else {
         alert('Game ended in a Draw')
     }
-
-
 }
-
 
 
 //keep score
@@ -90,11 +123,12 @@ function gameScore(game) {
         draw++
     }
 
-
 }
 
+//validate user 
 
 
 
 
-game()
+
+
