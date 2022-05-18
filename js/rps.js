@@ -7,6 +7,7 @@ let buttons = document.getElementById('buttons')
 //this is where the user's choice he selected will show up
 let userPick = document.querySelector('.userSelection')
 let computerPick = document.querySelector('.computerSelection')
+let resetBtn = document.querySelector('.reset')
 
 let userscore = document.querySelector('.userscore')
 let botscore = document.querySelector('.botscore')
@@ -21,14 +22,18 @@ let botScore = 0
 let draw = 0
 
 
+//resets the game 
+resetBtn.addEventListener('click', () => location.reload())
 
 
 buttons.addEventListener('click', clickListener)
 
 function clickListener(e) {
+    //if the target clicked inside the div's tag name doesn't equal 'BUTTON' return
     if (e.target.tagName != 'BUTTON') {
         return
     }
+    //users choice on the button/ get id from target and set it to user choice
     yourChoice = e.target.id
     const playerselection = e.target.className
     const computerselection = computerPlay()
@@ -39,17 +44,33 @@ function clickListener(e) {
     gameScore(result)
     userscore.textContent = playerScore
     botscore.textContent = botScore
+    checkWinner()
 
+}
 
+//function to check the winner 
+function checkWinner() {
+    if (playerScore === 5) {
+        updateWinner('gamewon')
+    } else if (botScore === 5) {
+        updateWinner('botwon')
+    }
+}
 
+//function to update the page on who the winner is
+function updateWinner(winner) {
+    if (winner === 'gamewon') {
+        resultDisplay.textContent = gameWonMessage
+    } else if (winner === 'botwon') {
+        resultDisplay.textContent = gameLostMessage
+    }
+
+    buttons.removeEventListener('click', clickListener)
 }
 
 
 
-
-
-
-
+//winning messages
 let playerWin = 'You won the round'
 let botWon = 'the Bot won this round'
 let drawInGame = 'Draw!'
@@ -91,48 +112,18 @@ function singleRound(playerselection, computerselection) {
 }
 
 
-
-
-// function game() {
-//     //play the game 5 times and reports the winner/loser at the end
-//     //keeps score 
-//     for (let i = 0; i < 5; i++) {
-//         singleRound()
-//     }
-
-//     gameScore()
-//     console.log(`your score is: ${playerScore}`)
-//     console.log(`bot score is: ${botScore}`)
-
-//     if (playerScore > botScore) {
-//         alert(gameWonMessage)
-//     } else if (botScore > playerScore) {
-//         alert(gameLostMessage)
-//     } else {
-//         alert('Game ended in a Draw')
-//     }
-// }
-
-
-//keep score
-
 function gameScore(results) {
     //keep track of the score
     if (results === playerWin) {
         playerScore++
-        // return `this is the bots score: ${botScore}
-        //         this is your score: ${playerScore}`
     } else if (results === botWon) {
         botScore++
-        // return `this is the bots score: ${botScore} 
-        //         this is player score: ${playerScore}`
     } else {
         draw++
     }
 
 }
 
-//validate user 
 
 
 
